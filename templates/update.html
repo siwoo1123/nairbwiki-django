@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block contents %}
+<title>{{ title }} (편집) - 네어브위키</title>
+
+<h1 style="font-size: 3.1rem; font-weight: bold; margin: 5px;">'{{ title }}'문서 수정</h1>
+<form action="/updateDoc/", method="post">
+    {% csrf_token %}
+    <input type="hidden" name="title" value="{{ title }}">
+    <textarea name="content"  placeholder="내용을 입력하세요.." class="form-control" id="floatingTextarea2" style="height: 30rem" required>{{ content }}</textarea> <br>
+    <hr>
+    <label><input type="checkbox" name="check" id="check" required><span style="cursor: pointer;"> 문서 편집을 저장하면 당신은 기여한 내용을 CC-BY-NC-SA 2.0 KR으로 배포하고 기여한 문서에 대한 하이퍼링크나 URL을 이용하여 저작자 표시를 하는 것으로 충분하다는 데 동의하는 것입니다. <b>이 동의는 철회할 수 없습니다</b></span></label>
+    <hr>
+    <button type="submit" class="btn btn-success">반영하기</button>
+</form>
+
+{% endblock %}
